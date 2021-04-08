@@ -1,0 +1,4 @@
+import { Meteor } from 'meteor/meteor';
+import { MoveCollection } from '/imports/api/MoveCollection';
+
+const insertMove = moveText => MoveCollection.insert({ text: moveText });

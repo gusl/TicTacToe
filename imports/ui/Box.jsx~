@@ -1,0 +1,5 @@
+import React from 'react';
+ 
+export const Box = ({ player }) => { // player = 'X' or 'O' or nothing.
+  return <div>{player}</div>
+};
