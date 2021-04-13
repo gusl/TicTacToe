@@ -19,8 +19,12 @@ Meteor.methods({
     'moves.updateMove'(value) {updateMove(value)}
 })
 
-const SEED_USERNAME = 'gustavo';
-const SEED_PASSWORD = 'gustavo';
+const SEED_USERNAME = 'gusl';
+const SEED_PASSWORD = 'gusl';
+
+  // Constant Table
+  // QUESTIONS: 'question_name', 'statement', 'hint1', 'hint2', 'correct_answer'
+
 
 Meteor.startup(() => {
   if (!Accounts.findUserByUsername(SEED_USERNAME)) {
@@ -29,6 +33,10 @@ Meteor.startup(() => {
       password: SEED_PASSWORD,
     });
   }
+  // Reset Table
+  // MONEY: 'player', 'money'
+  new Mongo.Collection('players');
+  // At every question, reset table ANSWERS
 });
 
 // Make a git commit from here

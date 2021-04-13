@@ -21,8 +21,7 @@ export const App = () => {
         <>
           {user ? (
             <>
-              Hello {user.username}!
-              <div className="user" onClick={logout}><font color='blue'><u>log out</u></font></div>
+              Hello {user.username}!        <div className="user" onClick={logout}><font color='blue'><u>log out</u></font></div>
             </>
           ) : (
             <LoginForm />
@@ -38,6 +37,7 @@ export const App = () => {
 
 // <ul onClick={() => increment()}>
 
+// Mongo: new table, 'user': 'random number'
 
 // Click
 // Button "stop timer", which also disables clicks
