@@ -6,6 +6,8 @@ import { LoginForm } from "./LoginForm";
 
 //FRONT END
 
+// print user.username
+
 export const App = () => {
   const user = useTracker(() => Meteor.user());
   const moves = useTracker(() => MoveCollection.find({}).fetch()); // JS, using Meteor library
