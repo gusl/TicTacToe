@@ -10,12 +10,18 @@ export const LoginForm = () => {
   const submit = (e) => {
     e.preventDefault();
     Meteor.loginWithPassword(username, password);
-  };
-
+  }; 
+  
+  // It's easier to do some things on start-up than as reactive methods
   const create = (e) => {
     e.preventDefault();
-    Accounts.createUser(username, password);
-  };
+    // Defines 
+    const user = [{
+      username: username,
+      password: password,
+   }];
+   Meteor.call('users.insert', user);
+};
 
   return (
     <form onSubmit={submit} className="login-form">
