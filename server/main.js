@@ -53,7 +53,6 @@ Meteor.startup(() => {
   // MONEY: 'player', 'money'
 
   const players = new Mongo.Collection("players");
-
   // At every question, reset table ANSWERS
 });
 

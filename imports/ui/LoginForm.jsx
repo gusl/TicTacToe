@@ -15,12 +15,11 @@ export const LoginForm = () => {
   // It's easier to do some things on start-up than as reactive methods
   const create = (e) => {
     e.preventDefault();
-    // Defines 
-    const user = [{
-      username: username,
-      password: password,
-   }];
-   Meteor.call('users.insert', user);
+  //   const user = [{ // What type is this? Vector?
+  //     username: username,
+  //     password: password,
+  //  }];
+   Meteor.call('users.insert', username, password);
 };
 
   return (

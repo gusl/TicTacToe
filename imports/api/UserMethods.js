@@ -1,19 +1,13 @@
 import { check } from "meteor/check";
 
 Meteor.methods({
-    "users.insert" (users) {
-      check(users, [
-        {
-          username: String,
-          password: String
-        },
-      ]);
-  
-      users.forEach(({username, password}) => {
-        const userExists = Accounts.findUserByUsername(username);
-        if (!userExists) {
-          const userId = Accounts.createUser({username, password});
-        }
-      });
-    },
+    "users.insert" (username, password) { //Does this register a function? The place that uses it passes a single 'user'
+        //  not users.  Is type conversion happening?
+      // What does this do? Is it mapping the function to each row in 'users'?
+      // For every user, if it doesn't exist, create it.
+      const userExists = Accounts.findUserByUsername(username);
+      if (!userExists) {
+        const userId = Accounts.createUser({username, password});
+      }
+    }
   });
