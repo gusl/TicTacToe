@@ -8,7 +8,8 @@ export const UsersList = () => { // <-- functional component
   useEffect(() => { userlist() }, []); // a.k.a. 'onLoad': refresh every time the page is rendered, or any of the
                            // variables in [].
   const userlist = (e) => { // Meteor method: => ()
-    setUsersList(Meteor.call("users.list"));
+    // setUsersList(Meteor.call("users.list"));
+    console.log(Meteor.users());
   };
   function ArrayListItems({elements}) { // Type: () => React/HTML
     return elements.map((element) => <li key={element}>{element}</li>);

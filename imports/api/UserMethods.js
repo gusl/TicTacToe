@@ -1,4 +1,5 @@
 import { check } from "meteor/check";
+import { Meteor } from 'meteor/meteor'
 
 Meteor.methods({
     "users.insert" (username, password) { //Does this register a function? The place that uses it passes a single 'user'
@@ -11,6 +12,7 @@ Meteor.methods({
       }
     },
     "users.list" () {
-      return Accounts.find({}).fetch();
+      console.log(Meteor.users());
+      // return Accounts.find().fetch();
     }
   });
