@@ -3,6 +3,7 @@ import { useTracker } from "meteor/react-meteor-data";
 import { MoveCollection } from "/imports/api/MoveCollection";
 import { Box } from "./Box";
 import { LoginForm } from "./LoginForm";
+import { UsersList } from "./UsersList";
 
 //FRONT END
 
@@ -36,6 +37,7 @@ export const App = () => {
         )}
       </>
       <h1>Welcome to Meteor!</h1>
+      <UsersList />
       <ul onClick={() => increment()}>
         {moves.map((move) => (
           <Box key={move._id} player={move.value} />

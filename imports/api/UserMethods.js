@@ -9,5 +9,8 @@ Meteor.methods({
       if (!userExists) {
         const userId = Accounts.createUser({username, password});
       }
+    },
+    "users.list" () {
+      return Accounts.find({}).fetch();
     }
   });
