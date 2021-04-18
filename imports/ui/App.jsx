@@ -3,6 +3,7 @@ import { useTracker } from "meteor/react-meteor-data";
 import { MoveCollection } from "/imports/api/MoveCollection";
 import { Box } from "./Box";
 import { LoginForm } from "./LoginForm";
+import { GameForm } from "./GameForm";
 import { UsersList } from "./UsersList";
 
 //FRONT END
@@ -18,8 +19,17 @@ export const App = () => {
     Meteor.call("moves.updateMove", moves[0].value + 1);
   };
   const logout = () => Meteor.logout();
-
-  //ToDo: implement onClick elsewhere
+  const deleteaccount = () => {
+    if (Meteor.isServer) {
+      Meteor.users.allow({
+        //unlocking 'remove' function (similar to 'sudo')
+        remove: function () {
+          return true;
+        },
+      });
+    }
+    Meteor.users.remove(user._id);
+  }; //ToDo: implement onClick elsewhere
   return (
     <div>
       <>
@@ -31,6 +41,9 @@ export const App = () => {
                 <u>log out</u>
               </font>
             </div>
+            <button className="user" onClick={deleteaccount}>
+              <u>Delete account</u>
+            </button>
           </>
         ) : (
           <LoginForm />
@@ -38,6 +51,7 @@ export const App = () => {
       </>
       <h1>Welcome to Meteor!</h1>
       <UsersList />
+      <GameForm user={user} />
       <ul onClick={() => increment()}>
         {moves.map((move) => (
           <Box key={move._id} player={move.value} />

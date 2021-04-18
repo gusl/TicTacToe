@@ -18,4 +18,11 @@ Meteor.methods({
     const users = Meteor.users;
     console.log(users);
   },
+  "users.drawnumber"() {
+    const id = this.userId;
+    const number = Math.random();
+    console.log(number);
+    Meteor.users.update({ _id: id }, { $set: { number: number } });
+    return number;
+  },
 });
