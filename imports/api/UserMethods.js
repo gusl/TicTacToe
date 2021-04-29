@@ -10,6 +10,7 @@ Meteor.methods({
     const userExists = Accounts.findUserByUsername(username);
     if (!userExists) {
       const userId = Accounts.createUser({ username, password });
+      Meteor.call("numbers.insert");
     }
   },
   // if you remove "autopublish" package you need to go through the backend

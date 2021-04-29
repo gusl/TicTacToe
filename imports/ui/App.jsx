@@ -5,6 +5,7 @@ import { Box } from "./Box";
 import { LoginForm } from "./LoginForm";
 import { GameForm } from "./GameForm";
 import { UsersList } from "./UsersList";
+import { callMethod } from "../utils/callMethod";
 
 //FRONT END
 
@@ -57,6 +58,47 @@ export const App = () => {
           <Box key={move._id} player={move.value} />
         ))}
       </ul>
+      <Number />
+      <BetRender />
+    </div>
+  );
+};
+
+const Number = () => {
+  const [myNumber, setMyNumber] = useState(null);
+  const fetchNumber = async () => {
+    setMyNumber(await callMethod({ name: "numbers.insert" }));
+    console.log(`${myNumber} is my number`);
+  };
+
+  return (
+    <div>
+      {myNumber ? (
+        <h2>This is your randomly generated number: {myNumber}</h2>
+      ) : (
+        <p>Please generate a new number</p>
+      )}
+      <button onClick={fetchNumber}>Fetch Number</button>
+    </div>
+  );
+};
+
+const BetRender = () => {
+  const [betSize, setBetSize] = useState(0);
+  const fetchBet = async () => {
+    setMyNumber(await callMethod({ name: "numbers.insert" }));
+    console.log(`${myNumber} is my number`);
+  };
+
+  return (
+    <div>
+      <form>
+        <input
+          type="text"
+          placeholder="$344"
+          onChange={(e) => setBetSize(e.target.value)}
+        />
+      </form>
     </div>
   );
 };

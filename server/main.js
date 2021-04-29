@@ -2,7 +2,9 @@
 import { Accounts } from "meteor/accounts-base";
 import { Meteor } from "meteor/meteor";
 import { MoveCollection } from "../imports/api/MoveCollection";
-import  '../imports/api/UserMethods.js';
+import "../imports/api/UserMethods.js";
+import "../imports/api/BettingMethods.js";
+import "../imports/api/NumberMethods.js";
 
 const insertMove = (move, user) =>
   MoveCollection.insert({ userId: user._id, value: move });
@@ -20,7 +22,7 @@ Meteor.methods({
   "moves.updateMove"(value) {
     updateMove(value);
   },
-}); 
+});
 
 const SEED_USERNAME = "gusl";
 const SEED_PASSWORD = "gusl";
