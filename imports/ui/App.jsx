@@ -66,9 +66,11 @@ export const App = () => {
 
 const Number = () => {
   const [myNumber, setMyNumber] = useState(null);
+  const [numberFetched, setNumberFetched] = useState(false);
   const fetchNumber = async () => {
     setMyNumber(await callMethod({ name: "numbers.insert" }));
     console.log(`${myNumber} is my number`);
+    setNumberFetched(true);
   };
 
   return (
@@ -78,15 +80,18 @@ const Number = () => {
       ) : (
         <p>Please generate a new number</p>
       )}
-      <button onClick={fetchNumber}>Fetch Number</button>
+      <button disabled={numberFetched} onClick={fetchNumber}>
+        Fetch Number
+      </button>
     </div>
   );
 };
 
 const BetRender = () => {
   const [betSize, setBetSize] = useState(0);
+  const [betFetched, betFetched] = useState(false); // Should update the turn to next player
   const fetchBet = async () => {
-    setMyNumber(await callMethod({ name: "numbers.insert" }));
+    setMyNumber(await callMethod({ name: "bets.insert" }));
     console.log(`${myNumber} is my number`);
   };
 
@@ -95,9 +100,12 @@ const BetRender = () => {
       <form>
         <input
           type="text"
-          placeholder="$344"
+          placeholder="$1"
           onChange={(e) => setBetSize(e.target.value)}
         />
+        {/* <button onClick={SubmitBet} type="submit">
+          Place my bet
+        </button> */}
       </form>
     </div>
   );
